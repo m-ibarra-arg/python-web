@@ -1,11 +1,13 @@
 from decouple import config
+import pymysql
+pymysql.install_as_MySQLdb()
 
 class Config:
     SECRET_KEY = 'codigofacilito'
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql://eduardo:@localhost/project_web_facilito'
+    SQLALCHEMY_DATABASE_URI = 'mysql://maxi:maxi@localhost:8889/project_web_facilito'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -15,7 +17,7 @@ class DevelopmentConfig(Config):
     MAIL_PASSWORD = config('MAIL_PASSWORD', default='password123')
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost/project_web_facilito_test'
+    SQLALCHEMY_DATABASE_URI = 'mysql://maxi:maxi@localhost/project_web_facilito_test'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     TEST = True
 
